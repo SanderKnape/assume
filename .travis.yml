@@ -1,0 +1,18 @@
+language: python
+python:
+  - 3.5
+  - 3.6
+install:
+  - make init
+script:
+  - make lint
+deploy:
+  provider: pypi
+  user: SanderKnape
+  password:
+    secure: LLWR7rhsw7nkVnJzL+vwcOD5W2xMOWgZdgojel10JZPlUVwY/ldu9KPPuS3B5KV2ai3cpmxM4KYRhLaZj2SPHQBMeDXMgRDkf21Q/vyv/fx5MuI3Z2AswNK4NASMa3B96i1Ov8XKOjkzDp14i8ogApB4uDRv3S5WTehe0x3ph6KOwvGl7fO7J6PJGbpbiiu7qOt7/OX90JFGblOWUgzoRugRkycvueoCaCotxlEggKt4wcUNn25bTxVhDcDrDbmRwIPs0/na+9vLmaXvUEyzXnIJfNICSkmaZnj1BkYdVAT59s6aA0pqIva7FHW3U06ugCl3Z7dZPCZtGcIWmcULOjdrR/iz12/SwmIEW/SPfanl/ix6PtfUXTZqwmkUjiq4ADQ+9DPpdXGm9ggPpuLB+zqXdvyvsxJUr82bTns65X/ZvckAUfM5Ft0zjQMVOHqtU13qhVbQtopo4Q9pnvPlwW7b0LlltBjoLM8zYQt8JDrXlsMs0AVaZOeVAOU7Qfy9zZQ95KcZ6+pf4MyjQkzJBwS5+qHhjRqxb6hjHuBy92t2ogNT6DDSZXlHLxm4JYnMaMmNWO3mKdO1/j6ZTQ0jpmv1/9KWSsoJF4wHIaKexpGdsIijV2H9hqDLVzlBUUv/dWftXuPfN2yIh1vhA0uqDUtmyyX9fCOUzXR9i5Waweg=
+  distributions: sdist bdist_wheel
+  on:
+    tags: true
+    repo: SanderKnape/aws-assume-role-helper
+    python: 3.6
