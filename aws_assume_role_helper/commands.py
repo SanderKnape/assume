@@ -15,6 +15,8 @@ class AWSAssumeRoleHelper(object):
 
     AWS_PROFILE_TEMPORARY_NAME = 'default-aws-assume-role-helper-temp'
 
+    config = {}
+
     def __init__(self):
         if not os.path.isdir(self.CONFIG_DIRECTORY):
             os.makedirs(self.CONFIG_DIRECTORY)
@@ -24,6 +26,9 @@ class AWSAssumeRoleHelper(object):
 
         with open(self.CONFIG_FILENAME, 'r') as stream:
             self.config = yaml.load(stream)
+
+            if self.config is None:
+                self.config = {}
 
     def _dump_config(self):
         with open(self.CONFIG_FILENAME, 'w', encoding='utf8') as contents:
@@ -37,17 +42,17 @@ class AWSAssumeRoleHelper(object):
 
         self._dump_config()
 
-        return "Added role '{}' to the configuration. You can now assume this \
-            role with:\n\naws-assume-role-helper assume {}".format(name, name)
+        return "Added role '{}' to the configuration. You can now assume this "\
+            "role with:\n\naws-assume-role-helper assume {}".format(name, name)
 
     def remove(self, name):
         self.config.pop(name)
 
         self._dump_config()
 
-        return "Role '{}' removed from the configuration. Please note that if \
-            you are currently assuming this role, you still need to clear this \
-            with:\n\naws-assume-role-helper clear".format(name)
+        return "Role '{}' removed from the configuration. Please note that if " \
+            "you are currently assuming this role, you still need to clear this " \
+            "with:\n\naws-assume-role-helper clear".format(name)
 
     def list(self):
         return yaml.dump(self.config, default_flow_style=False)
