@@ -14,5 +14,5 @@ deploy:
   distributions: sdist bdist_wheel
   on:
     tags: true
-    repo: SanderKnape/aws-assume-role-helper
+    repo: SanderKnape/assume
     python: 3.6

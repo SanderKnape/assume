@@ -9,11 +9,11 @@ import boto3
 
 
 class AWSAssumeRoleHelper(object):
-    CONFIG_DIRECTORY = os.path.join(os.environ['HOME'], '.aws-assume-role-helper')
+    CONFIG_DIRECTORY = os.path.join(os.environ['HOME'], '.assume')
     CONFIG_FILENAME = os.path.join(CONFIG_DIRECTORY, 'config.yaml')
     CREDENTIALS_FILENAME = os.path.join(os.environ['HOME'], '.aws', 'credentials')
 
-    AWS_PROFILE_TEMPORARY_NAME = 'default-aws-assume-role-helper-temp'
+    AWS_PROFILE_TEMPORARY_NAME = 'default-assume-temp'
 
     config = {}
 
@@ -43,7 +43,7 @@ class AWSAssumeRoleHelper(object):
         self._dump_config()
 
         return "Added role '{}' to the configuration. You can now assume this "\
-            "role with:\n\naws-assume-role-helper assume {}".format(name, name)
+            "role with:\n\nassume assume {}".format(name, name)
 
     def remove(self, name):
         self.config.pop(name)
@@ -52,7 +52,7 @@ class AWSAssumeRoleHelper(object):
 
         return "Role '{}' removed from the configuration. Please note that if " \
             "you are currently assuming this role, you still need to clear this " \
-            "with:\n\naws-assume-role-helper clear".format(name)
+            "with:\n\nassume clear".format(name)
 
     def list(self):
         return yaml.dump(self.config, default_flow_style=False)
