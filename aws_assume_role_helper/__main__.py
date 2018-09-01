@@ -19,8 +19,8 @@ def main():
         print(commands.remove(arguments.name))
     elif arguments.command == 'list':
         print(commands.list())
-    elif arguments.command == 'assume':
-        print(commands.assume(arguments.name))
+    elif arguments.command == 'switch':
+        print(commands.switch(arguments.name))
     elif arguments.command == 'clear':
         print(commands.clear())
 
@@ -42,8 +42,8 @@ def parse_arguments():
 
     subparsers.add_parser('list', help='List added IAM roles')
 
-    assume_parser = subparsers.add_parser('assume', help='Assume one of the added IAM roles')
-    assume_parser.add_argument('name', help='Name of the role to assume')
+    switch_parser = subparsers.add_parser('switch', help='Assume one of the added IAM roles')
+    switch_parser.add_argument('name', help='Name of the role to assume')
 
     subparsers.add_parser('clear', help='Clear any currently assumed role')
 

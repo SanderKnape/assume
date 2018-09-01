@@ -43,7 +43,7 @@ class AWSAssumeRoleHelper(object):
         self._dump_config()
 
         return "Added role '{}' to the configuration. You can now assume this "\
-            "role with:\n\nassume assume {}".format(name, name)
+            "role with:\n\nassume switch {}".format(name, name)
 
     def remove(self, name):
         self.config.pop(name)
@@ -57,7 +57,7 @@ class AWSAssumeRoleHelper(object):
     def list(self):
         return yaml.dump(self.config, default_flow_style=False)
 
-    def assume(self, name):
+    def switch(self, name):
         self.clear()
 
         role_arn = self.config[name]['role_arn']

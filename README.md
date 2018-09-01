@@ -47,10 +47,10 @@ assume add myrole --role-arn arn:aws:iam::012345678912:role/myrole
 You can now `assume` this role as follows:
 
 ```bash
-assume assume myrole
+assume switch myrole
 ```
 
-The `assume` keeps a configuration file in `~/.assume/config.yaml`. You can list the contents of the current configuration with the following file:
+`assume` keeps a configuration file in `~/.assume/config.yaml`. You can list the contents of the current configuration with the following file:
 
 ```bash
 assume list
@@ -68,7 +68,7 @@ To `remove` a role to be assumed, run the following command:
 assume remove myrole
 ```
 
-This command grabs the `default` role that was stored in a temporary location when running the `assume` command. These credentials are then put back in the `default` role.
+This command grabs the `default` role that was stored in a temporary location when running the `switch` command. These credentials are then put back in the `default` role.
 
 ## Alternatives
 
