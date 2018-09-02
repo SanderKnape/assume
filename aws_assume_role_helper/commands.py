@@ -62,11 +62,11 @@ class AWSAssumeRoleHelper(object):
 
         role_arn = self.config[name]['role_arn']
 
-        profile = ''
         if 'profile' in self.config[name]:
-            profile = self.config[name]['profile']
+            session = boto3.session.Session(profile_name=self.config[name]['profile'])
+        else:
+            session = boto3.session.Session()
 
-        session = boto3.session.Session(profile_name=profile)
         sts = session.client('sts')
 
         response = sts.assume_role(
