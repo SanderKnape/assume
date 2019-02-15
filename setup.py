@@ -22,7 +22,7 @@ setup(
         ]
     },
     install_requires=[
-        'pyyaml~=3.12',
+        'pyyaml~=4.2b1',
         'boto3~=1.5'
     ],
     extras_require={
