@@ -51,7 +51,7 @@ def parse_arguments():
 
 
 def iam_role_type(role_arn):
-    regex = r'^arn:aws:iam::[0-9]{12}:role\/[a-z_+=,.@-]*$'
+    regex = r'^arn:aws:iam::[0-9]{12}:role\/[a-zA-Z0-9_+=,.@-]*$'
 
     if not re.match(regex, role_arn):
         raise "Not a valid IAM ARN"
