@@ -113,6 +113,7 @@ class AWSAssumeRoleHelper(object):
 
             for key in config_credentials.options(self.AWS_PROFILE_TEMPORARY_NAME):
                 config_credentials.set('default', key, config_credentials.get(self.AWS_PROFILE_TEMPORARY_NAME, key))
+            config_credentials.remove_option('default', 'aws_session_token')
 
             config_credentials.remove_section(self.AWS_PROFILE_TEMPORARY_NAME)
 
